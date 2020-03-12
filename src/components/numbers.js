@@ -13,24 +13,24 @@ import Nine from "../images/numbers/nine.inline.svg"
 import Dot from "../images/numbers/dot.inline.svg"
 import styles from "./numbers.module.scss"
 
-const randomNumber = () => Math.floor(Math.random() * 10)
-const randomBinary = randomNumber()
-const randomDecimal = randomNumber()
-
-const Numbers = () => {
+const Numbers = ({ distanceInKilometers }) => {
+  const [randomBinary, setRandomBinary] = useState(0)
+  const [randomDecimal, setRandomDecimal] = useState(0)
   const [binary, setBinary] = useState(0)
   const [decimal, setDecimal] = useState(0)
 
   useEffect(() => {
+    const dist = (distanceInKilometers + "").split(".")
+    setRandomBinary(parseInt(dist[0]))
+    setRandomDecimal(parseInt(dist[1]))
+  }, [])
+
+  useEffect(() => {
     setTimeout(() => {
-      if (binary < randomBinary) {
-        setBinary(binary + 1)
-      }
-      if (decimal < randomDecimal) {
-        setDecimal(decimal + 1)
-      }
+      binary < randomBinary && setBinary(binary + 1)
+      decimal < randomDecimal && setDecimal(decimal + 1)
     }, 50)
-  }, [binary, decimal])
+  }, [binary, randomBinary, decimal, randomDecimal])
 
   const numbers = {
     0: <Zero />,
@@ -46,11 +46,17 @@ const Numbers = () => {
   }
 
   return (
-    <div className={styles.numbers}>
-      {numbers[binary]}
-      <Dot className={styles.dot} />
-      {numbers[decimal]}
-    </div>
+    <>
+      <div className={styles.text}>
+        <div className={styles.text__distance}>Distans</div>
+        <div>{distanceInKilometers} kilometer</div>
+      </div>
+      <div className={styles.numbers}>
+        {numbers[binary]}
+        <Dot className={styles.dot} />
+        {numbers[decimal]}
+      </div>
+    </>
   )
 }
 

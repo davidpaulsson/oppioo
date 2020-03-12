@@ -3,6 +3,7 @@ import "./reset.css"
 import "./fonts.css"
 import "./global.scss"
 import styles from "./layout.module.scss"
+import AppUI from "./appui"
 
 const colors = ["#0A5046", "#A0143C", "#1464C3", "#FA8732", "#321E8C"]
 
@@ -26,7 +27,12 @@ const Layout = ({ children }) => {
             ↳ hej@oppioo.com
           </a>
         </header>
-        <main className={styles.main}>{children}</main>
+        <main className={styles.phone}>
+          <div className={styles.phone__inner} style={{ backgroundColor }}>
+            <AppUI {...{ backgroundColor }} />
+            {children}
+          </div>
+        </main>
       </div>
     </>
   )

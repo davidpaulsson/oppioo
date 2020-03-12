@@ -1,4 +1,28 @@
+.text {
+  display: flex;
+
+  margin-top: 3.2rem;
+  margin-bottom: 1.6rem;
+
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+
+  color: #fff;
+
+  font-size: 1rem;
+  line-height: 1.6rem;
+
+  &__distance {
+    width: 11.6rem;
+  }
+}
+
 .numbers {
+  margin-bottom: 1.6rem;
+  padding-bottom: 2.3rem;
+
+  border-bottom: 1px solid rgba($color: #fff, $alpha: 0.15);
+
   svg {
     width: 10.8rem;
     height: 18rem;
