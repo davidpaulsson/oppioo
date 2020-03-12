@@ -12,5 +12,26 @@
     "timeInMinutes": "33:29",
     "minutesPerKilometer": "5:19",
     "heartBeatPerMinute": "175"
+  },
+  {
+    "title": "Dagens löprunda!",
+    "distanceInKilometers": "9.0",
+    "timeInMinutes": "43:28",
+    "minutesPerKilometer": "4:50",
+    "heartBeatPerMinute": "179"
+  },
+  {
+    "title": "Dagens löprunda!",
+    "distanceInKilometers": "2.8",
+    "timeInMinutes": "13:41",
+    "minutesPerKilometer": "4:53",
+    "heartBeatPerMinute": "172"
+  },
+  {
+    "title": "Dagens löprunda!",
+    "distanceInKilometers": "4.1",
+    "timeInMinutes": "22:41",
+    "minutesPerKilometer": "5:32",
+    "heartBeatPerMinute": "158"
   }
 ]

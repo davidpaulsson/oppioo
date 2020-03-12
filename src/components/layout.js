@@ -1,9 +1,10 @@
+import sample from "lodash.sample"
 import React, { useEffect, useState } from "react"
-import "./reset.css"
+import AppUI from "./appui"
 import "./fonts.css"
 import "./global.scss"
 import styles from "./layout.module.scss"
-import AppUI from "./appui"
+import "./reset.css"
 
 const colors = ["#0A5046", "#A0143C", "#1464C3", "#FA8732", "#321E8C"]
 
@@ -11,8 +12,7 @@ const Layout = ({ children }) => {
   const [backgroundColor, setBackgroundColor] = useState("#FFFFFF")
 
   useEffect(() => {
-    const randomColor = colors[Math.floor(Math.random() * colors.length)]
-    setBackgroundColor(randomColor)
+    setBackgroundColor(sample(colors))
   }, [])
 
   return (

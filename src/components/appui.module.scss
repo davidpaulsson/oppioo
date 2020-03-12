@@ -1,16 +1,45 @@
-.title,
-.details {
+.title {
   letter-spacing: 0.05rem;
   text-transform: uppercase;
 
-  color: #fff;
+  color: rgba($color: #fff, $alpha: 0.75);
 
   font-size: 1rem;
+  font-weight: bold;
   line-height: 1.6rem;
 }
 
 .details {
   display: flex;
+
+  letter-spacing: 0.025rem;
+  text-transform: uppercase;
+
+  color: #fff;
+
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+
+  &__title {
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+
+    color: rgba($color: #fff, $alpha: 0.75);
+
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.6rem;
+  }
+
+  &__unit {
+    letter-spacing: 0.02rem;
+
+    color: #fff;
+
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+
   &__time {
     width: 11.6rem;
   }
