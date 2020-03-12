@@ -41,9 +41,11 @@
   width: 37.5rem;
   height: 66.7rem;
 
+  animation: fadein 2s;
+
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: #000;
 
   &__inner {
     height: 100%;
@@ -52,5 +54,14 @@
 
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

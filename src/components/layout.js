@@ -1,10 +1,10 @@
 import sample from "lodash.sample"
 import React, { useEffect, useState } from "react"
 import AppUI from "./appui"
+import "./reset.css"
 import "./fonts.css"
 import "./global.scss"
 import styles from "./layout.module.scss"
-import "./reset.css"
 
 const colors = ["#0A5046", "#A0143C", "#1464C3", "#FA8732", "#321E8C"]
 
