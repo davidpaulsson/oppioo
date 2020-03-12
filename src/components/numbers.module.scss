@@ -1,0 +1,16 @@
+.numbers {
+  svg {
+    width: 10.8rem;
+    height: 18rem;
+    margin-right: 0.8rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.dot {
+      width: 3.6rem;
+      height: 3.6rem;
+    }
+  }
+}

@@ -1,51 +1,35 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React, { useEffect, useState } from "react"
+import "./reset.css"
+import "./fonts.css"
+import "./global.scss"
+import styles from "./layout.module.scss"
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
-import "./layout.css"
+const colors = ["#0A5046", "#A0143C", "#1464C3", "#FA8732", "#321E8C"]
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  const [backgroundColor, setBackgroundColor] = useState("#FFFFFF")
+
+  useEffect(() => {
+    const randomColor = colors[Math.floor(Math.random() * colors.length)]
+    setBackgroundColor(randomColor)
+  }, [])
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+      <div className={styles.container} style={{ backgroundColor }}>
+        <header className={styles.header}>
+          <p className={styles.header__preamble}>
+            Oppioo är ett initiativ som vill ta fram ett digitalt
+            träningsverktyg för cancerdrabbade.
+          </p>
+          <a className={styles.header__mail} href="mailto:hej@oppioo.com">
+            ↳ hej@oppioo.com
+          </a>
+        </header>
+        <main className={styles.main}>{children}</main>
       </div>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

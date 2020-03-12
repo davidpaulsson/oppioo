@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "maison";
+  font-weight: normal;
+  font-style: normal;
+
+  src: url("/maisonneue-book-webfont.woff2") format("woff2"),
+    url("/maisonneue-book-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "maison";
+  font-weight: bold;
+  font-style: normal;
+
+  src: url("/maisonneue-medium-webfont.woff2") format("woff2"),
+    url("/maisonneue-medium-webfont.woff") format("woff");
+}
+
+html,
+body {
+  font-family: "maison", serif;
+}

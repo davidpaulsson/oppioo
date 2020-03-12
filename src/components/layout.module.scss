@@ -1,0 +1,42 @@
+.container {
+  max-width: 100vw;
+  min-height: 100vh;
+  padding: 1.6rem;
+
+  transition: background-color 0.3s ease;
+}
+
+.header {
+  position: absolute;
+
+  max-width: 29.6rem;
+
+  letter-spacing: 0.02rem;
+
+  font-size: 1.4rem;
+  line-height: 2rem;
+
+  &__preamble {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  &__mail {
+    text-decoration: none;
+
+    color: rgba(255, 255, 255, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+
+    &:hover {
+      border-bottom-color: rgba(255, 255, 255, 0.75);
+    }
+  }
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+
+  min-height: 100vh;
+}
