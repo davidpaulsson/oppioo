@@ -9,6 +9,7 @@ import "./fonts.css"
 import "./global.scss"
 import styles from "./layout.module.scss"
 import useWindowSize from "../hooks/useWindowSize"
+import Logo from "../images/logo.inline.svg"
 
 const colors = ["#0A5046", "#A0143C", "#1464C3", "#FA8732", "#321E8C"]
 
@@ -35,12 +36,12 @@ const Layout = ({ children }) => {
     setBackgroundColor(sample(colors))
   }, [])
 
-  const currentHeight = () => ref.current?.clientHeight || height
+  const contentHeight = () => ref.current?.clientHeight || height
 
   const translateY = useTransform(
     scrollYProgress,
     [0, 1],
-    [0, currentHeight() * -1]
+    [0, contentHeight() * -1]
   )
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 1])
 
@@ -58,7 +59,14 @@ const Layout = ({ children }) => {
             ↳ {site.siteMetadata.email}
           </a>
         </header>
-        <Main hidden>{children}</Main>
+        <Logo className={styles.cornerLogo} style={{ fill: "#fff" }} />
+        {/* empty ghost div to take up vertical space for scroll purposes */}
+        <div
+          style={{
+            height: height + contentHeight(),
+            // backgroundColor: "red",
+          }}
+        />
         <div className={styles.phone}>
           <div className={styles.phone__inner} style={{ backgroundColor }}>
             <AppUI {...{ backgroundColor }} />
