@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import sample from "lodash.sample"
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState } from "react"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import AppUI from "./appui"
 import Main from "./main"
@@ -30,19 +30,14 @@ const Layout = ({ children }) => {
   const { scrollYProgress } = useViewportScroll()
   const { height } = useWindowSize()
   const [backgroundColor, setBackgroundColor] = useState("#FFFFFF")
-  const ref = useRef()
 
   useEffect(() => {
-    setBackgroundColor(sample(colors))
+    const color = sample(colors)
+    setBackgroundColor(color)
+    document.documentElement.style.setProperty("--background", color)
   }, [])
 
-  const contentHeight = () => ref.current?.clientHeight || height
-
-  const translateY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, contentHeight() * -1]
-  )
+  const translateY = useTransform(scrollYProgress, [0, 1], [0, 548 * -1])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 1])
 
   return (
@@ -63,28 +58,26 @@ const Layout = ({ children }) => {
         {/* empty ghost div to take up vertical space for scroll purposes */}
         <div
           style={{
-            height: height + contentHeight(),
-            // backgroundColor: "red",
+            height: height + 518,
           }}
         />
         <div className={styles.phone}>
           <div className={styles.phone__inner} style={{ backgroundColor }}>
             <AppUI {...{ backgroundColor }} />
+
             <motion.div className={styles.overlay} style={{ opacity }} />
             <motion.div
-              initial={{ opacity: 0, translateY: 500 }}
-              animate={{ opacity: 1, translateY: 0 }}
+              initial={{ translateY: 500 }}
+              animate={{ translateY: 0 }}
               transition={{
                 delay: 0.3,
                 type: "spring",
-                stiffness: 260,
-                damping: 20,
+                stiffness: 100,
+                damping: 15,
               }}
             >
               <motion.div style={{ translateY }}>
-                <div ref={ref}>
-                  <Main>{children}</Main>
-                </div>
+                <Main>{children}</Main>
               </motion.div>
             </motion.div>
           </div>

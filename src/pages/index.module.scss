@@ -55,7 +55,8 @@
     border-bottom: 1px solid #ebebeb;
 
     &:hover {
-      border-color: #242021;
+      color: var(--background);
+      border-color: rgba(var(--background), 0.25);
     }
   }
 }
