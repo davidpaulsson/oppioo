@@ -75,10 +75,8 @@ const Layout = ({ children }) => {
           </a>
         </header>
         {isLarge && (
-          <Logo className={styles.cornerLogo} style={{ fill: "#fff" }} />
-        )}
-        {isLarge && (
           <>
+            <Logo className={styles.cornerLogo} style={{ fill: "#fff" }} />
             {/* empty ghost div to take up vertical space for scroll purposes */}
             <div
               style={{
