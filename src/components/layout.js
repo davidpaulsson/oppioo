@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import sample from "lodash.sample"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import AppUI from "./appui"
 import Main from "./main"
@@ -27,18 +27,38 @@ const Layout = ({ children }) => {
     `
   )
 
-  const { scrollYProgress } = useViewportScroll()
-  const { height } = useWindowSize()
+  // random bg color
   const [backgroundColor, setBackgroundColor] = useState("#FFFFFF")
-
   useEffect(() => {
     const color = sample(colors)
     setBackgroundColor(color)
     document.documentElement.style.setProperty("--background", color)
   }, [])
 
+  // manage scroll
+  const { scrollYProgress } = useViewportScroll()
+  const contentRef = useRef()
+  const phoneRef = useRef()
+  const uiRef = useRef()
+  const { width, height: windowHeight } = useWindowSize()
+  const [sizes, setSizes] = useState({
+    content: 0,
+    phone: 0,
+    ui: 0,
+    window: windowHeight,
+  })
+  useEffect(() => {
+    setSizes({
+      content: contentRef.current?.clientHeight || 0,
+      phone: phoneRef.current?.clientHeight || 0,
+      ui: uiRef.current?.clientHeight || 0,
+      window: windowHeight,
+    })
+  }, [contentRef.current, phoneRef.current, uiRef.current, windowHeight])
+
   const translateY = useTransform(scrollYProgress, [0, 1], [0, 548 * -1])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 1])
+  const isLarge = width >= 450
 
   return (
     <>
@@ -54,32 +74,41 @@ const Layout = ({ children }) => {
             ↳ {site.siteMetadata.email}
           </a>
         </header>
-        <Logo className={styles.cornerLogo} style={{ fill: "#fff" }} />
-        {/* empty ghost div to take up vertical space for scroll purposes */}
-        <div
-          style={{
-            height: height + 518,
-          }}
-        />
-        <div className={styles.phone}>
-          <div className={styles.phone__inner} style={{ backgroundColor }}>
-            <AppUI {...{ backgroundColor }} />
-
-            <motion.div className={styles.overlay} style={{ opacity }} />
-            <motion.div
-              initial={{ translateY: 500 }}
-              animate={{ translateY: 0 }}
-              transition={{
-                delay: 0.3,
-                type: "spring",
-                stiffness: 100,
-                damping: 15,
+        {isLarge && (
+          <Logo className={styles.cornerLogo} style={{ fill: "#fff" }} />
+        )}
+        {isLarge && (
+          <>
+            {/* empty ghost div to take up vertical space for scroll purposes */}
+            <div
+              style={{
+                height: sizes.content + (sizes.phone - sizes.ui),
               }}
-            >
-              <motion.div style={{ translateY }}>
-                <Main>{children}</Main>
+            />
+          </>
+        )}
+        <div className={styles.phone} ref={phoneRef}>
+          <div className={styles.phone__inner} style={{ backgroundColor }}>
+            <AppUI {...{ backgroundColor }} ref={uiRef} />
+            <motion.div className={styles.overlay} style={{ opacity }} />
+            {isLarge ? (
+              <motion.div
+                initial={{ translateY: 500 }}
+                animate={{ translateY: 0 }}
+                transition={{
+                  delay: 0.3,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                }}
+              >
+                <motion.div style={{ translateY }} ref={contentRef}>
+                  <Main>{children}</Main>
+                </motion.div>
               </motion.div>
-            </motion.div>
+            ) : (
+              <Main>{children}</Main>
+            )}
           </div>
         </div>
       </div>

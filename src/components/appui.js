@@ -1,10 +1,10 @@
 import sample from "lodash.sample"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, forwardRef } from "react"
 import appdata from "../fixtures/appdata.json"
 import styles from "./appui.module.scss"
 import Numbers from "./numbers"
 
-const AppUI = () => {
+const AppUI = React.forwardRef((_, ref) => {
   const [data, setData] = useState(null)
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const AppUI = () => {
   } = data
 
   return (
-    <div>
+    <div ref={ref}>
       <div className={styles.title}>{title}</div>
       <Numbers {...{ distanceInKilometers }} />
       <div className={styles.details}>
@@ -44,6 +44,6 @@ const AppUI = () => {
       </div>
     </div>
   )
-}
+})
 
 export default AppUI
