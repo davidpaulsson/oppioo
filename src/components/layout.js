@@ -93,8 +93,8 @@ const Layout = ({ children }) => {
             <motion.div className={styles.overlay} style={{ opacity }} />
             {isLarge ? (
               <motion.div
-                initial={{ translateY: 500 }}
-                animate={{ translateY: 0 }}
+                initial={{ opacity: 0, translateY: 500 }}
+                animate={{ opacity: 1, translateY: 0 }}
                 transition={{
                   delay: 0.3,
                   type: "spring",
@@ -107,7 +107,18 @@ const Layout = ({ children }) => {
                 </motion.div>
               </motion.div>
             ) : (
-              <Main>{children}</Main>
+              <motion.div
+                initial={{ opacity: 0, translateY: 500 }}
+                animate={{ opacity: 1, translateY: 0 }}
+                transition={{
+                  delay: 0.3,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                }}
+              >
+                <Main>{children}</Main>
+              </motion.div>
             )}
           </div>
         </div>
