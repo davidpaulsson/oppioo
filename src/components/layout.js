@@ -58,7 +58,11 @@ const Layout = ({ children }) => {
 
   const translateY = useTransform(scrollYProgress, [0, 1], [0, 548 * -1])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 1])
-  const isLarge = width >= 450
+
+  const [isLarge, setIsLarge] = useState(false)
+  useEffect(() => {
+    setIsLarge(width >= 450)
+  }, [width])
 
   return (
     <>
