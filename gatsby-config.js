@@ -38,14 +38,12 @@ module.exports = {
         name: `Oppioo`,
         short_name: `Oppioo`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#0A5046`,
+        theme_color: `#0A5046`,
         display: `minimal-ui`,
         icon: `src/images/oppioo-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }
