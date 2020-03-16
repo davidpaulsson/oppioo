@@ -2,7 +2,6 @@ module.exports = {
   siteMetadata: {
     title: `Oppioo`,
     description: `Oppioo är ett digitalt träningsverktyg för cancerdrabbade.`,
-    author: `@oppioo`,
     email: `hej@oppioo.com`,
   },
   plugins: [
