@@ -1,6 +1,6 @@
 # Välkommen
 
-Vi på Oppioo håller på att ta fram ett digitalt träningsverktyg för cancerdrabbade. Träning kanske inte är det första man tänker på när man har fått cancer, men forskning visar att träning har stor positiv effekt i måendet både under som efter cancerbehandlingen.
+Vi på Oppioo håller på att ta fram ett digitalt träningsverktyg för cancer-drabbade. Träning kanske inte är det första man tänker på när man har fått cancer, men forskning visar att träning har en stor positiv effekt i måendet både under som efter cancer-behandlingen.
 
 ## Information
 

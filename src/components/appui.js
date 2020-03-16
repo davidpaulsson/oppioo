@@ -4,7 +4,7 @@ import appdata from "../fixtures/appdata.json"
 import styles from "./appui.module.scss"
 import Numbers from "./numbers"
 
-const AppUI = React.forwardRef((_, ref) => {
+const AppUI = forwardRef((_, ref) => {
   const [data, setData] = useState(null)
 
   useEffect(() => {

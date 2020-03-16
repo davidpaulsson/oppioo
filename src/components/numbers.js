@@ -22,7 +22,7 @@ const Numbers = ({ distanceInKilometers }) => {
     const dist = (distanceInKilometers + "").split(".")
     setRandomBinary(parseInt(dist[0]))
     setRandomDecimal(parseInt(dist[1]))
-  }, [])
+  }, [distanceInKilometers])
 
   useEffect(() => {
     setTimeout(() => {
