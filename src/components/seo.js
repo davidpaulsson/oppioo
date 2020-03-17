@@ -49,6 +49,14 @@ function SEO({ description, lang, meta, title }) {
           content: `https://oppioo.com${ShareImage}`,
         },
         {
+          property: `og:image:width`,
+          content: `1200`,
+        },
+        {
+          property: `og:image:width`,
+          content: `630`,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
