@@ -69,3 +69,7 @@ yarn-error.log
 .yarn-integrity
 
 .now
+static/fonts/MaisonNeue-Book.woff
+static/fonts/MaisonNeue-Book.woff2
+static/fonts/MaisonNeue-Medium.woff
+static/fonts/MaisonNeue-Medium.woff2
