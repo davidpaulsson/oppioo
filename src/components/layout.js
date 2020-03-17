@@ -54,9 +54,9 @@ const Layout = ({ children }) => {
       ui: uiRef.current?.clientHeight || 0,
       window: windowHeight,
     })
-  }, [windowHeight])
+  }, [contentRef.current, phoneRef.current, uiRef.current, windowHeight])
 
-  const translateY = useTransform(scrollYProgress, [0, 1], [0, 548 * -1])
+  const translateY = useTransform(scrollYProgress, [0, 1], [0, 524 * -1])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 1])
 
   const [isLarge, setIsLarge] = useState(false)
