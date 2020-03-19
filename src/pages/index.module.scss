@@ -55,7 +55,7 @@
     border-bottom: 1px solid #ebebeb;
 
     &:hover {
-      color: var(--background);
+      color: rgba(var(--background), 1);
       border-color: rgba(var(--background), 0.25);
     }
   }

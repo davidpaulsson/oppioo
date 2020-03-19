@@ -10,6 +10,7 @@ import "./global.scss"
 import styles from "./layout.module.scss"
 import useWindowSize from "../hooks/useWindowSize"
 import Logo from "../images/logo.inline.svg"
+import { hex2Rgb } from "./hex2Rgb"
 
 const colors = ["#0A5046", "#A0143C", "#1464C3", "#FA8732", "#321E8C"]
 
@@ -32,7 +33,7 @@ const Layout = ({ children }) => {
   useEffect(() => {
     const color = sample(colors)
     setBackgroundColor(color)
-    document.documentElement.style.setProperty("--background", color)
+    document.documentElement.style.setProperty("--background", hex2Rgb(color))
   }, [])
 
   // manage scroll
