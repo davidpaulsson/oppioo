@@ -14,13 +14,14 @@ import hex2Rgb from "./hex2Rgb"
 
 const colors = ["#0A5046", "#A0143C", "#1464C3", "#FA8732", "#321E8C"]
 
-const Layout = ({ children }) => {
+const Layout = ({ lang, children }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
             description
+            descriptionEn
             email
           }
         }
@@ -70,7 +71,8 @@ const Layout = ({ children }) => {
       <div className={styles.container} style={{ backgroundColor }}>
         <header className={styles.header}>
           <p className={styles.header__preamble}>
-            {site.siteMetadata.description}
+            {lang === "en" && site.siteMetadata.descriptionEn}
+            {lang === "sv" && site.siteMetadata.description}
           </p>
           <a
             className={styles.header__mail}
@@ -92,7 +94,7 @@ const Layout = ({ children }) => {
         )}
         <div className={styles.phone} ref={phoneRef}>
           <div className={styles.phone__inner} style={{ backgroundColor }}>
-            <AppUI {...{ backgroundColor }} ref={uiRef} />
+            <AppUI {...{ backgroundColor, lang }} ref={uiRef} />
             <motion.div className={styles.overlay} style={{ opacity }} />
             {isLarge ? (
               <motion.div

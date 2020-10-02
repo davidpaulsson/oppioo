@@ -10,7 +10,7 @@ const IndexPage = () => {
     graphql`
       query {
         allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/home.md/" } }
+          filter: { fileAbsolutePath: { regex: "/home-en.md/" } }
         ) {
           edges {
             node {
@@ -25,7 +25,7 @@ const IndexPage = () => {
   const { html } = md.edges[0].node
 
   return (
-    <Layout lang="sv">
+    <Layout lang="en">
       <SEO title="Oppioo" />
       <div className={styles.handle} />
       <span

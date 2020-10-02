@@ -12,7 +12,7 @@ import Two from "../images/numbers/two.inline.svg"
 import Zero from "../images/numbers/zero.inline.svg"
 import styles from "./numbers.module.scss"
 
-const Numbers = ({ distanceInKilometers }) => {
+const Numbers = ({ distanceInKilometers, lang }) => {
   const [randomBinary, setRandomBinary] = useState(0)
   const [randomDecimal, setRandomDecimal] = useState(0)
   const [binary, setBinary] = useState(0)
@@ -47,7 +47,10 @@ const Numbers = ({ distanceInKilometers }) => {
   return (
     <>
       <div className={styles.text}>
-        <div className={styles.text__distance}>Distans</div>
+        <div className={styles.text__distance}>
+          {lang === "sv" && "Distans"}
+          {lang === "en" && "Distance"}
+        </div>
         <div>{distanceInKilometers} kilometer</div>
       </div>
       <div className={styles.numbers}>
