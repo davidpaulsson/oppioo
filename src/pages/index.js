@@ -26,7 +26,7 @@ const IndexPage = () => {
 
   return (
     <Layout lang="sv">
-      <SEO title="Oppioo" />
+      <SEO title="Oppioo" lang="sv" />
       <div className={styles.handle} />
       <span
         className={styles.content}

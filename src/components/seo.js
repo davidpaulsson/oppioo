@@ -12,13 +12,22 @@ function SEO({ description, lang, meta, title }) {
           siteMetadata {
             title
             description
+            descriptionEn
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const getDescription = () => {
+    if (description) {
+      return description
+    }
+    if (lang === "sv") {
+      return site.siteMetadata.description
+    }
+    return site.siteMetadata.descriptionEn
+  }
 
   return (
     <Helmet
@@ -30,7 +39,7 @@ function SEO({ description, lang, meta, title }) {
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: getDescription(),
         },
         {
           property: `og:title`,
@@ -38,7 +47,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: getDescription(),
         },
         {
           property: `og:type`,
@@ -66,7 +75,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: getDescription(),
         },
       ].concat(meta)}
     />
